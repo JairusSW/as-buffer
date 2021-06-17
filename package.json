@@ -1,9 +1,9 @@
 {
   "name": "buffer-as",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "NodeJS Buffer for AssemblyScript",
-  "types": "./assembly/Buffer.ts",
-  "ascMain": "./assembly/Buffer.ts",
+  "types": "buffer.ts",
+  "ascMain": "buffer.ts",
   "scripts": {
     "test": "node tests",
     "asbuild:untouched": "asc assembly/test.ts --target debug",

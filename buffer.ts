@@ -3,7 +3,7 @@ import { E_INVALIDLENGTH } from "util/error";
 
 // @ts-ignore
 import { StringSink } from "as-string-sink";
-import { decodeHEX, decodeLatin, encodeHEX } from "./encodings";
+import { decodeHEX, decodeLatin, encodeHEX } from "./assembly/encodings";
 
 class JSONbuffer {
   public type: string = "Buffer";

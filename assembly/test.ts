@@ -2,7 +2,7 @@ import { decodeHEX, encodeHEX, decodeLatin, encodeLatin } from "./encodings";
 
 import { console } from "as-console";
 
-import { Buffer } from "./Buffer";
+import { Buffer } from "../buffer";
 
 export function test(): void {
   console.log(`Buffer.from('Hello World')`);
