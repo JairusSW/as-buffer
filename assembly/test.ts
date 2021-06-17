@@ -1,8 +1,6 @@
-import { decodeHEX, encodeHEX, decodeLatin, encodeLatin } from "./encodings";
-
 import { console } from "as-console";
 
-import { Buffer } from "../buffer";
+import { Buffer } from ".";
 
 export function test(): void {
   console.log(`Buffer.from('Hello World')`);

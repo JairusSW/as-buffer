@@ -1,9 +1,9 @@
 {
   "name": "buffer-as",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "NodeJS Buffer for AssemblyScript",
-  "types": "buffer.ts",
-  "ascMain": "buffer.ts",
+  "types": "assembly/index.ts",
+  "ascMain": "assembly/index.ts",
   "scripts": {
     "test": "node tests",
     "asbuild:untouched": "asc assembly/test.ts --target debug",
@@ -33,6 +33,7 @@
     "buffer": "^6.0.3"
   },
   "dependencies": {
-    "as-string-sink": "^0.2.1"
+    "as-string-sink": "^0.2.1",
+    "buffer-as": "0.0.3"
   }
 }
