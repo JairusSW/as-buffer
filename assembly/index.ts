@@ -23,26 +23,28 @@ export class Buffer extends Uint8Array {
    * @deprecated
    */
   public constructor(str: string, encoding: string | null = null) {
-    let length = str.length;
+    let data: Uint8Array = new Uint8Array(0)
     if (encoding) {
-      if (
-        encoding === "utf8" ||
-        encoding === "utf-8" ||
-        encoding === "binary" ||
-        encoding === "latin1"
-      )
-        length = str.length;
-      else if (encoding === "hex") length === str.length >>> 1;
+      if (encoding === "binary" || encoding === "latin1") {
+        data = decodeLatin(str)
+      }
+      else if (encoding === "hex") {
+        data = decodeHEX(str)
+      }
+      else if (encoding === "utf8" || encoding === "utf-8") {
+        data = Uint8Array.wrap(String.UTF8.encode(str))
+      } else if (encoding === 'ucs2' || encoding === 'ucs-2' || encoding === 'utf16le' || encoding === 'utf-16le') {
+        data = Uint8Array.wrap(String.UTF16.encode(str))
+      }
     }
-    super(length);
-    if (!encoding) cloneData(Uint8Array.wrap(String.UTF8.encode(str)), this);
-    if (encoding === "utf8" || encoding === "utf-8") {
-      cloneData(Uint8Array.wrap(String.UTF8.encode(str)), this);
-    } else if (encoding === "hex") {
-      cloneData(decodeHEX(str), this);
-    } else if (encoding === "latin1" || encoding === "binary") {
-      cloneData(decodeLatin(str), this);
-    }
+
+    // UTF8 as default encoding
+    if (!encoding) data = Uint8Array.wrap(String.UTF8.encode(str))
+
+    super(data.length);
+
+    cloneData(data, this)
+    
   }
   /**
    * Convert buffer to string. Can be encoded with the provided encoding.
