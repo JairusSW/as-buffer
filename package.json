@@ -1,0 +1,38 @@
+{
+  "name": "as-buffer",
+  "version": "0.0.1",
+  "description": "NodeJS Buffer for AssemblyScript",
+  "types": "./assembly/Buffer.ts",
+  "ascMain": "./assembly/Buffer.ts",
+  "scripts": {
+    "test": "node tests",
+    "asbuild:untouched": "asc assembly/test.ts --target debug",
+    "asbuild:optimized": "asc assembly/test.ts --target release",
+    "asbuild": "yarn asbuild:untouched && yarn asbuild:optimized"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JairusSW/as-buffer.git"
+  },
+  "keywords": [
+    "AssemblyScript",
+    "buffer",
+    "NodeJS",
+    "binary"
+  ],
+  "author": "Jairus Tanaka",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JairusSW/as-buffer/issues"
+  },
+  "homepage": "https://github.com/JairusSW/as-buffer#readme",
+  "devDependencies": {
+    "@assemblyscript/loader": "^0.19.3",
+    "as-console": "^5.0.3",
+    "assemblyscript": "^0.19.2",
+    "buffer": "^6.0.3"
+  },
+  "dependencies": {
+    "as-string-sink": "^0.2.1"
+  }
+}
