@@ -30,4 +30,13 @@ export function test(): void {
   console.log(`Buffer.from('Hello World').equals(Buffer.from('Hello World'))`);
   
   console.log(Buffer.from("Hello World").equals(Buffer.from("Hello World")));
+
+  console.log(Buffer.from('Hello World'))
+
+  console.log(Buffer.from('Hello World').toString('ascii'))
+
+  console.log(Buffer.from(Buffer.from('Hello World').toString('ascii'), 'ascii'))
+
+  console.log(Buffer.from(Buffer.from('Hello World').toString('ascii'), 'ascii').toString('utf8'))
+  
 }

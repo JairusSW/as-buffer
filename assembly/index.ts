@@ -42,6 +42,8 @@ export class Buffer extends Uint8Array {
         data = Uint8Array.wrap(String.UTF16.encode(str));
       } else if (encoding === "base64") {
         data = decodeBase64(str);
+      } else if (encoding === "ascii") {
+        data = decodeAscii(str)
       }
     }
 
@@ -51,6 +53,7 @@ export class Buffer extends Uint8Array {
     super(data.length);
 
     cloneData(data, this);
+
   }
   /**
    * Convert buffer to string. Can be encoded with the provided encoding.
@@ -72,9 +75,11 @@ export class Buffer extends Uint8Array {
       encoding === "utf16le" ||
       encoding === "utf-16le"
     ) {
-      String.UTF16.decode(this.buffer);
+      return String.UTF16.decode(this.buffer);
     } else if (encoding === "base64") {
-      encodeBase64(this);
+      return encodeBase64(this);
+    } else if (encoding === "ascii") {
+      return encodeAscii(this)
     }
     return "";
   }
@@ -212,7 +217,7 @@ export class Buffer extends Uint8Array {
    * @returns boolean
    */
   static isEncoding(encoding: string): boolean {
-    const encodings = ["utf8", "utf-8", "latin1", "binary", "hex"];
+    const encodings = ["utf8", "utf-8", "latin1", "binary", "hex", "base64", "ascii", "utf16le", "ucs2", "ucs-2", "utf-16le"];
     return encodings.includes(encoding) ? true : false;
   }
   /**
@@ -307,4 +312,21 @@ function decodeHEX(str: string): Uint8Array {
     pos = pos + 2;
   }
   return byteArray;
+}
+
+function decodeAscii(str: string): Uint8Array {
+  const byteArray = new Uint8Array(str.length)
+  for (let i = 0; i < str.length; ++i) {
+    // Node's code seems to be doing this and not & 0x7F..
+    byteArray[i] = (str.charCodeAt(i) & 0xFF)
+  }
+  return byteArray
+}
+
+function encodeAscii (buf: Uint8Array): string {
+  let ret = new StringSink()
+  for (let i = 0; i < buf.length; ++i) {
+    ret.write(String.fromCharCode(buf[i] & 0x7F))
+  }
+  return ret.toString()
 }
