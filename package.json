@@ -1,5 +1,5 @@
 {
-  "name": "as-buffer",
+  "name": "buffer-as",
   "version": "0.0.1",
   "description": "NodeJS Buffer for AssemblyScript",
   "types": "./assembly/Buffer.ts",
