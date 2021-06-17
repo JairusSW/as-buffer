@@ -56,18 +56,18 @@ export class Buffer extends Uint8Array {
     else return "";
   }
   equals(otherBuffer: Buffer): boolean {
-    let equals = true
-    if (this.length !== otherBuffer.length) return false
-    if (this.byteLength !== otherBuffer.length) return false
+    let equals = true;
+    if (this.length !== otherBuffer.length) return false;
+    if (this.byteLength !== otherBuffer.length) return false;
     for (let i = 0; i < this.length; i++) {
-      if (this[i] !== otherBuffer[i]) return false   
+      if (this[i] !== otherBuffer[i]) return false;
     }
-    return equals
+    return equals;
   }
   toJSON(): JSONbuffer {
     return new JSONbuffer(bufferToArray(this));
   }
-  slice(start: i32 | null = null, end: i32 | null = null): Buffer {
+  slice(start: i32, end: i32): Buffer {
     let startNum = 0;
     let endNum = this.length;
     if (start) startNum = start;
@@ -106,6 +106,9 @@ export class Buffer extends Uint8Array {
    * @param size count of octets to allocate
    */
   static allocUnsafe(size: i32): Buffer {
+    // Temporary until I learn memory
+    return Buffer.alloc(size);
+    /*
     // range must be valid
     if (<usize>size > BLOCK_MAXSIZE) throw new RangeError(E_INVALIDLENGTH);
     let buffer = heap.alloc(size);
@@ -118,6 +121,7 @@ export class Buffer extends Uint8Array {
 
     // return and retain
     return changetype<Buffer>(result);
+    */
   }
   /**
    * Allocates a new non-pooled buffer of {size} octets, leaving memory not initialized, so the contents
@@ -126,6 +130,9 @@ export class Buffer extends Uint8Array {
    * @param size count of octets to allocate
    */
   static allocUnsafeSlow(size: i32): Buffer {
+    // Temporary until I learn memory
+    return Buffer.alloc(size);
+    /*
     // range must be valid
     if (<usize>size > BLOCK_MAXSIZE) throw new RangeError(E_INVALIDLENGTH);
     let buffer = heap.alloc(size);
@@ -138,6 +145,7 @@ export class Buffer extends Uint8Array {
 
     // return and retain
     return changetype<Buffer>(result);
+    */
   }
   /**
    * Create buffer from multiple types.
