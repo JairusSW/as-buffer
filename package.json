@@ -1,6 +1,6 @@
 {
   "name": "buffer-as",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "NodeJS Buffer for AssemblyScript",
   "types": "assembly/index.ts",
   "ascMain": "assembly/index.ts",
@@ -33,7 +33,6 @@
     "buffer": "^6.0.3"
   },
   "dependencies": {
-    "as-string-sink": "^0.2.1",
-    "buffer-as": "0.0.3"
+    "as-string-sink": "^0.2.1"
   }
 }
