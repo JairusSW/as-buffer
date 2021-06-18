@@ -9,7 +9,7 @@
 ## Usage
 
 ```js
-import { Buffer } fom 'buffer-as'
+import { Buffer } from 'buffer-as'
 
 const buf = Buffer.from('Hello World!')
 
