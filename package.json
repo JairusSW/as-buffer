@@ -28,11 +28,6 @@
   "homepage": "https://github.com/JairusSW/as-buffer#readme",
   "devDependencies": {
     "@assemblyscript/loader": "^0.19.3",
-    "as-console": "^5.0.3",
-    "assemblyscript": "^0.19.2",
-    "buffer": "^6.0.3"
-  },
-  "dependencies": {
-    "as-string-sink": "^0.2.1"
+    "assemblyscript": "^0.19.2"
   }
 }
